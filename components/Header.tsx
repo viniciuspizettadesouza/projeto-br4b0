@@ -1,6 +1,5 @@
 import { auth } from "@/auth";
 import Link from "next/link";
-import Image from "next/image";
 import { HeaderUserActions } from "./HeaderUserActions";
 
 export async function Header() {

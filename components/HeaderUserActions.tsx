@@ -49,9 +49,9 @@ export function HeaderUserActions({ isAuthenticated, firstName, image }: Props) 
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
-              <a href="/api/auth/signout" className="w-full text-red-600">
+              <Link href="/api/auth/signout" className="w-full text-red-600">
                 Sair
-              </a>
+              </Link>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

@@ -2,7 +2,6 @@ import { auth } from "@/auth";
 import Link from "next/link";
 
 export default async function Home() {
-  const session = await auth();
 
   return (
     <div className="min-h-screen dark:bg-black text-gray-900 dark:text-white font-[family-name:var(--font-geist-sans)]">

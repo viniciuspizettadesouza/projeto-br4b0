@@ -1,5 +1,6 @@
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 
 export default async function ProfilePage() {
   const session = await auth();
@@ -20,12 +21,12 @@ export default async function ProfilePage() {
         alt="User Avatar"
         className="w-20 h-20 rounded-full border mt-4"
       />
-      <a
+      <Link
         href="/api/auth/signout"
         className="mt-6 inline-block px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
       >
         Sair
-      </a>
+      </Link>
     </main>
   );
 }

@@ -30,7 +30,7 @@ export default function WeeklyLoadCalculator() {
     quarta: 4, quinta: 4, sexta: 4, sabado: 4,
   });
 
-  const [subjects, setSubjects] = useState<Subject[]>([
+  const [subjects] = useState<Subject[]>([
     { name: "A", score: 25 }, { name: "B", score: 15 },
     { name: "C", score: 10 }, { name: "D", score: 10 },
     { name: "E", score: 10 }, { name: "F", score: 10 },
