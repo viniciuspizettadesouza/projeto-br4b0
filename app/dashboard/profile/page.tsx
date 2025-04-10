@@ -1,6 +1,7 @@
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 export default async function ProfilePage() {
   const session = await auth();
@@ -16,7 +17,7 @@ export default async function ProfilePage() {
       <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
         {session.user?.email}
       </p>
-      <img
+      <Image
         src={session.user?.image ?? ""}
         alt="User Avatar"
         className="w-20 h-20 rounded-full border mt-4"
