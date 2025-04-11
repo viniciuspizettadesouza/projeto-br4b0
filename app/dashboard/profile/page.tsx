@@ -21,6 +21,8 @@ export default async function ProfilePage() {
         src={session.user?.image ?? ""}
         alt="User Avatar"
         className="w-20 h-20 rounded-full border mt-4"
+        width={80}
+        height={80}
       />
       <Link
         href="/api/auth/signout"
