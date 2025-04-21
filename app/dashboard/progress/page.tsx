@@ -29,7 +29,7 @@ export default function ProgressoDisciplinaPage() {
   const progress = (completedCount / lessons.length) * 100;
 
   return (
-    <div className="max-w-2xl mx-auto space-y-8">
+    <div className=" space-y-8">
       <h2 className="text-2xl font-bold capitalize">Progresso em {disciplina}</h2>
 
       <Progress value={progress} />

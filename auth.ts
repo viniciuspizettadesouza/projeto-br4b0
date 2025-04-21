@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
-const ADMIN_EMAILS = ["viniciuspzt@gmail.com"];
+const ADMIN_EMAILS = ["viniciuspzt@gmail.com", "joaolisboa@projetobravo.com.br"];
 
 export const {
   handlers: { GET, POST },

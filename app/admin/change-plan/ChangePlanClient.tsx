@@ -37,7 +37,6 @@ export default function ChangePlanForm() {
   return (
     <div className="space-y-6">
       <div className="p-4 border rounded bg-gray-50 dark:bg-gray-800 mb-6">
-        <h2 className="text-xl font-bold mb-2">Editar Cadastro</h2>
         <div className="flex justify-between items-start gap-4">
           <div className="flex gap-4">
             <Image
