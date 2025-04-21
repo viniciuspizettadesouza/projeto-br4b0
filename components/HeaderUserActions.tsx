@@ -39,7 +39,7 @@ export function HeaderUserActions() {
 
           <DropdownMenuContent align="end" className="w-48">
             <DropdownMenuItem asChild>
-              <Link href="/dashboard/profile" className="w-full">
+              <Link href="/dashboard" className="w-full">
                 Dashboard
               </Link>
             </DropdownMenuItem>

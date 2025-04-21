@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useDashboardContext } from "@/context/dashboard-context";
+import { StudentDashboardPanel } from "@/components/StudentDashboard";
 
 export default function ProfilePage() {
   const { firstName, email, image } = useDashboardContext();
@@ -10,6 +11,8 @@ export default function ProfilePage() {
   return (
     <div className="min-h-screen text-black dark:text-white bg-white dark:bg-black">
       <h1 className="text-2xl font-bold mb-4">Perfil do Usuário</h1>
+
+      <StudentDashboardPanel />
       <p className="text-lg">Bem-vindo, {firstName}!</p>
       <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{email}</p>
       <Image

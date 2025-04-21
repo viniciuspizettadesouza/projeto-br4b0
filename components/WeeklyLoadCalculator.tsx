@@ -10,6 +10,8 @@ import {
   buildCustomLegend,
 } from "./utils/weekly-load-helpers";
 import { WeekDay, Subject } from "@/types";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const COLORS = [
   "#FF6384",
@@ -87,8 +89,8 @@ export default function WeeklyLoadCalculator() {
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-8">
         {orderedDays.map((day) => (
           <div key={day}>
-            <label className="block font-medium capitalize mb-1">{day}</label>
-            <input
+            <Label className="capitalize mb-1 block">{day}</Label>
+            <Input
               type="number"
               min={0}
               value={dailyHours[day]}
@@ -98,7 +100,6 @@ export default function WeeklyLoadCalculator() {
                   [day]: Number(e.target.value),
                 }))
               }
-              className="border w-full px-2 py-1 rounded"
             />
           </div>
         ))}
@@ -110,12 +111,11 @@ export default function WeeklyLoadCalculator() {
 
       <div className="grid grid-cols-2 gap-6 mb-8">
         <div>
-          <label className="font-semibold block mb-1">Pontuação Máxima da Prova</label>
-          <input
+          <Label className="block mb-1 font-semibold">Pontuação Máxima da Prova</Label>
+          <Input
             type="number"
             value={totalScore}
             onChange={(e) => setTotalScore(Number(e.target.value))}
-            className="border w-full px-2 py-1 rounded"
           />
         </div>
       </div>
