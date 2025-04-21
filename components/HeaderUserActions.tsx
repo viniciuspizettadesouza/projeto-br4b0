@@ -3,33 +3,28 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
+import { useDashboardContext } from "@/context/dashboard-context";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
 
-type Props = {
-  isAuthenticated: boolean;
-  firstName: string;
-  image?: string | null;
-};
-
-export function HeaderUserActions({ isAuthenticated, firstName, image }: Props) {
+export function HeaderUserActions() {
   const pathname = usePathname();
   const isOnSignInPage = pathname === "/sign-in";
+
+  const { firstName, image, email } = useDashboardContext();
+  const isAuthenticated = !!email;
 
   if (isAuthenticated) {
     return (
       <div className="flex items-center gap-4">
-        <Link
-          href="/dashboard"
-          className="text-sm px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition"
-        >
-          Painel
-        </Link>
-
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button className="flex items-center gap-2 cursor-pointer px-2 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition">
-            <span className="text-sm font-medium">{firstName}</span>
-
+              <span className="text-sm font-medium">{firstName}</span>
               {image && (
                 <Image
                   src={image}
@@ -45,7 +40,12 @@ export function HeaderUserActions({ isAuthenticated, firstName, image }: Props) 
           <DropdownMenuContent align="end" className="w-48">
             <DropdownMenuItem asChild>
               <Link href="/dashboard/profile" className="w-full">
-                Ver perfil
+                Dashboard
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/dashboard/profile" className="w-full">
+                Perfil
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>

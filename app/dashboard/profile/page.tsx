@@ -1,24 +1,21 @@
-import { auth } from "@/auth";
-import { redirect } from "next/navigation";
+"use client"
+
 import Link from "next/link";
 import Image from "next/image";
+import { useDashboardContext } from "@/context/dashboard-context";
 
-export default async function ProfilePage() {
-  const session = await auth();
-
-  if (!session) {
-    redirect("/sign-in");
-  }
+export default function ProfilePage() {
+  const { firstName, email, image } = useDashboardContext();
 
   return (
-    <main className="min-h-screen px-6 py-12 text-black dark:text-white bg-white dark:bg-black">
+    <div className="min-h-screen text-black dark:text-white bg-white dark:bg-black">
       <h1 className="text-2xl font-bold mb-4">Perfil do Usuário</h1>
-      <p className="text-lg">Bem-vindo, {session.user?.name}!</p>
+      <p className="text-lg">Bem-vindo, {firstName}!</p>
       <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-        {session.user?.email}
+        {email}
       </p>
       <Image
-        src={session.user?.image ?? ""}
+        src={image ?? ""}
         alt="User Avatar"
         className="w-20 h-20 rounded-full border mt-4"
         width={80}
@@ -30,6 +27,6 @@ export default async function ProfilePage() {
       >
         Sair
       </Link>
-    </main>
+    </div>
   );
 }
