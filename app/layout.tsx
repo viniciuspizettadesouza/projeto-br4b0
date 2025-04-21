@@ -28,18 +28,15 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const session = await auth();
-  const {
-    name,
-    email,
-    image,
-    role = "user",
-  } = session?.user ?? {};
+  const { email, image, role = "user" } = session?.user ?? {};
 
   const firstName = session?.user?.name?.split(" ")[0] ?? "";
 
   return (
     <html lang="en" className="bg-gray-50 dark:bg-black text-gray-900 dark:text-white">
-      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased min-h-screen`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased min-h-screen`}
+      >
         <DashboardContextProvider
           firstName={firstName}
           email={email ?? undefined}

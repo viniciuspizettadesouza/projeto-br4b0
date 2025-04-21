@@ -9,9 +9,7 @@ const dashboardLinks = [
   { label: "Meu Perfil", href: "/dashboard/profile", emoji: "⚙️" },
 ];
 
-const adminLinks = [
-  { label: "Cadastro Manual", href: "/admin/create-user", emoji: "👤" },
-];
+const adminLinks = [{ label: "Cadastro Manual", href: "/admin/create-user", emoji: "👤" }];
 
 export function AsideNavigation() {
   const { role } = useDashboardContext();
@@ -22,11 +20,7 @@ export function AsideNavigation() {
         <h2 className="text-xl font-bold mb-6">Menu</h2>
         <nav className="space-y-4">
           {dashboardLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="block hover:text-blue-600"
-            >
+            <Link key={link.href} href={link.href} className="block hover:text-blue-600">
               {link.emoji} {link.label}
             </Link>
           ))}
@@ -35,16 +29,10 @@ export function AsideNavigation() {
 
       {role === "admin" && (
         <div>
-          <h3 className="text-sm font-semibold text-gray-500 uppercase mb-4">
-            Administração
-          </h3>
+          <h3 className="text-sm font-semibold text-gray-500 uppercase mb-4">Administração</h3>
           <nav className="space-y-4">
             {adminLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="block hover:text-blue-600"
-              >
+              <Link key={link.href} href={link.href} className="block hover:text-blue-600">
                 {link.emoji} {link.label}
               </Link>
             ))}

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -11,9 +11,7 @@ export default function ProfilePage() {
     <div className="min-h-screen text-black dark:text-white bg-white dark:bg-black">
       <h1 className="text-2xl font-bold mb-4">Perfil do Usuário</h1>
       <p className="text-lg">Bem-vindo, {firstName}!</p>
-      <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-        {email}
-      </p>
+      <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{email}</p>
       <Image
         src={image ?? ""}
         alt="User Avatar"

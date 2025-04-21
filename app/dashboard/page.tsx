@@ -3,10 +3,9 @@
 import dynamic from "next/dynamic";
 import { useDashboardContext } from "@/context/dashboard-context";
 
-const WeeklyLoadCalculator = dynamic(
-  () => import("@/components/WeeklyLoadCalculator"),
-  { ssr: false }
-);
+const WeeklyLoadCalculator = dynamic(() => import("@/components/WeeklyLoadCalculator"), {
+  ssr: false,
+});
 
 export default function DashboardPage() {
   const { firstName } = useDashboardContext();

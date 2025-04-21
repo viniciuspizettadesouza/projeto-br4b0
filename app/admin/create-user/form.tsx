@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Label,
-} from "@/components/ui/label";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectTrigger,
@@ -16,8 +14,8 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 
 export default function CreateUserForm() {
-  const [plan, setPlan] = useState("");
-  const [months, setMonths] = useState("12");
+  const [, setPlan] = useState("");
+  const [, setMonths] = useState("12");
   const [emails, setEmails] = useState("");
   const [skipEmail, setSkipEmail] = useState(false);
 
@@ -36,12 +34,12 @@ export default function CreateUserForm() {
       </h2>
 
       <p className="text-sm text-muted-foreground leading-relaxed">
-        O cadastro permite que o aluno se matricule em um curso da sua conta, por
-        período determinado. Os convites de cadastros são válidos apenas para o
-        endereço de e-mail informado e só podem ser usados uma única vez.
+        O cadastro permite que o aluno se matricule em um curso da sua conta, por período
+        determinado. Os convites de cadastros são válidos apenas para o endereço de e-mail informado
+        e só podem ser usados uma única vez.
         <br />
-        Para enviar um convite de cadastro, basta selecionar um curso e digitar
-        algum endereço de e-mail.
+        Para enviar um convite de cadastro, basta selecionar um curso e digitar algum endereço de
+        e-mail.
         <br />
         <strong>Não é possível usar essa função para alunos já cadastrados em sua conta.</strong>
       </p>
@@ -54,15 +52,9 @@ export default function CreateUserForm() {
               <SelectValue placeholder="Selecione um plano" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="pcsc-mentoria">
-                🔥 PCSC - Escrivão [Plano de mentoria]
-              </SelectItem>
-              <SelectItem value="pcsc-avancado">
-                🔥 PCSC - Escrivão [Plano avançado]
-              </SelectItem>
-              <SelectItem value="pcsc-iniciante">
-                🔥 PCSC - Escrivão [Plano iniciante]
-              </SelectItem>
+              <SelectItem value="pcsc-mentoria">🔥 PCSC - Escrivão [Plano de mentoria]</SelectItem>
+              <SelectItem value="pcsc-avancado">🔥 PCSC - Escrivão [Plano avançado]</SelectItem>
+              <SelectItem value="pcsc-iniciante">🔥 PCSC - Escrivão [Plano iniciante]</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -100,7 +92,11 @@ export default function CreateUserForm() {
       </div>
 
       <div className="flex items-center space-x-2">
-        <Checkbox id="skipEmail" checked={skipEmail} onCheckedChange={() => setSkipEmail(!skipEmail)} />
+        <Checkbox
+          id="skipEmail"
+          checked={skipEmail}
+          onCheckedChange={() => setSkipEmail(!skipEmail)}
+        />
         <label
           htmlFor="skipEmail"
           className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"

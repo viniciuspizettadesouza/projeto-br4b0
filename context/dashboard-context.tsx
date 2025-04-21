@@ -16,7 +16,7 @@ export function DashboardContextProvider({
   firstName,
   email,
   image,
-  role
+  role,
 }: {
   children: React.ReactNode;
   firstName: string;

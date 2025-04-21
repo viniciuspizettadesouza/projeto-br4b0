@@ -1,11 +1,4 @@
-export type WeekDay =
-  | "domingo"
-  | "segunda"
-  | "terca"
-  | "quarta"
-  | "quinta"
-  | "sexta"
-  | "sabado";
+export type WeekDay = "domingo" | "segunda" | "terca" | "quarta" | "quinta" | "sexta" | "sabado";
 
 export type Subject = {
   name: string;
