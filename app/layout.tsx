@@ -5,6 +5,8 @@ import { Header } from "@/components/Header";
 import { DashboardContextProvider } from "@/context/dashboard-context";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Toaster } from "sonner";
+
 import "./globals.css";
 
 const geistSans = Geist({
@@ -46,6 +48,7 @@ export default async function RootLayout({
           <Header />
           <main>
             {children}
+            <Toaster position="top-center" richColors />
             <Analytics />
             <SpeedInsights />
           </main>

@@ -21,7 +21,7 @@ const stats = [
   },
 ];
 
-export default function AdminStatsPage() {
+export default function StatsPage() {
   return (
     <div className="space-y-6">
       <h1 className="text-2xl font-bold mb-4">Estatísticas da Plataforma</h1>

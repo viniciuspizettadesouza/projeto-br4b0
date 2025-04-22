@@ -10,6 +10,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
+import { LayoutDashboard, User, LogOut } from "lucide-react";
 
 export function HeaderUserActions() {
   const pathname = usePathname();
@@ -24,7 +25,6 @@ export function HeaderUserActions() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button className="flex items-center gap-2 cursor-pointer px-2 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition">
-              <span className="text-sm font-medium">{firstName}</span>
               {image && (
                 <Image
                   src={image}
@@ -34,22 +34,26 @@ export function HeaderUserActions() {
                   className="rounded-full border border-gray-300 dark:border-gray-600"
                 />
               )}
+              <span className="text-sm font-medium">{firstName}</span>
             </button>
           </DropdownMenuTrigger>
 
-          <DropdownMenuContent align="end" className="w-48">
+          <DropdownMenuContent align="end" className="w-52">
             <DropdownMenuItem asChild>
-              <Link href="/dashboard" className="w-full">
+              <Link href="/dashboard" className="w-full flex items-center gap-2">
+                <LayoutDashboard size={16} />
                 Dashboard
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
-              <Link href="/dashboard/profile" className="w-full">
+              <Link href="/dashboard/profile" className="w-full flex items-center gap-2">
+                <User size={16} />
                 Perfil
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
-              <Link href="/api/auth/signout" className="w-full text-red-600">
+              <Link href="/api/auth/signout" className="w-full flex items-center gap-2 ">
+                <LogOut size={16} />
                 Sair
               </Link>
             </DropdownMenuItem>

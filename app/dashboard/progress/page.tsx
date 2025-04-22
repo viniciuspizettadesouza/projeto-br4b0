@@ -13,7 +13,7 @@ const mockLessons = [
   { id: 4, title: "Revisão e Exercícios", duration: "15min", completed: false },
 ];
 
-export default function ProgressoDisciplinaPage() {
+export default function ProgressPage() {
   const { disciplina } = useParams();
   const [lessons, setLessons] = useState(mockLessons);
 

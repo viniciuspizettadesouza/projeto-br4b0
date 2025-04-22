@@ -27,7 +27,7 @@ const mockStudents = [
   },
 ];
 
-export default function StudentsListPage() {
+export default function StudentsPage() {
   return (
     <div>
       <h1 className="text-2xl font-bold mb-6">Lista de Alunos</h1>
