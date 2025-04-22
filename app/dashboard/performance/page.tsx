@@ -32,7 +32,7 @@ const weeklyGoals = [
 
 export default function PerformancePage() {
   return (
-    <div className="max-w-5xl mx-auto p-6 space-y-12">
+    <div className="max-w-5xl mx-auto space-y-12">
       <h1 className="text-2xl font-bold mb-6">Métricas de Desempenho</h1>
 
       <section>

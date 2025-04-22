@@ -58,7 +58,7 @@ export default function VisualControlPage() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div className="max-w-6xl mx-auto">
       <h1 className="text-2xl font-bold mb-6">Controle Visual</h1>
 
       <div className="overflow-x-auto border rounded">
@@ -84,8 +84,12 @@ export default function VisualControlPage() {
                 {columns.map((colKey, colIndex) => (
                   <td
                     key={colIndex}
-                    className={`border p-2 cursor-pointer ${legendColors[cellColors[rowIndex][colIndex]]}`}
-                    onClick={() => handleClick(rowIndex, colIndex)}
+                    className={`border p-2 ${
+                      data[colKey][rowIndex]
+                        ? `cursor-pointer ${legendColors[cellColors[rowIndex][colIndex]]}`
+                        : "bg-gray-50 text-gray-400"
+                    }`}
+                    onClick={() => data[colKey][rowIndex] && handleClick(rowIndex, colIndex)}
                   >
                     {data[colKey][rowIndex] || ""}
                   </td>
