@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { data } from "@/app/dashboard/visual-control/utils";
 
 const legendColors = [
@@ -22,39 +22,31 @@ const legendColors = [
   "bg-red-800 text-white",
 ];
 
-const rowTitles = [
-  "1 Revisão",
-  "2 Revisões",
-  "3 Revisões",
-  "4 Revisões",
-  "5 Revisões",
-  "6 Revisões",
-  "7 Revisões",
-  "8 Revisões",
-  "9 Revisões",
-  "10 Revisões",
-  "11 Revisões",
-  "12 Revisões",
-  "13 Revisões",
-];
-
-const columns = Object.keys(data);
-const totalRows = rowTitles.length;
+const rowTitles = Array.from({ length: legendColors.length - 1 }, (_, i) =>
+  i + 1 === 1 ? "1 Revisão" : `${i + 1} Revisões`
+);
 
 export default function VisualControlPage() {
-  const [cellColors, setCellColors] = useState(
-    Array.from({ length: totalRows }, () => Array.from({ length: columns.length }, () => 0))
+  const columns = useMemo(() => Object.keys(data), []);
+  const totalRows = rowTitles.length;
+
+  const initialColors = useMemo(
+    () => Array.from({ length: totalRows }, () => Array(columns.length).fill(0)),
+    [columns.length, totalRows]
   );
 
+  const [cellColors, setCellColors] = useState(initialColors);
+
   const handleClick = (rowIndex: number, colIndex: number) => {
-    setCellColors((prev) => {
-      const newData = prev.map((row, i) =>
-        row.map((cell, j) =>
-          i === rowIndex && j === colIndex ? (cell + 1) % legendColors.length : cell
-        )
-      );
-      return newData;
-    });
+    if (!data[columns[colIndex]][rowIndex]) return;
+
+    setCellColors((prev) =>
+      prev.map((row, i) =>
+        i === rowIndex
+          ? row.map((cell, j) => (j === colIndex ? (cell + 1) % legendColors.length : cell))
+          : row
+      )
+    );
   };
 
   return (
@@ -66,34 +58,38 @@ export default function VisualControlPage() {
           <thead>
             <tr>
               <th className="border p-2">LEGENDA</th>
-              {columns.map((title, i) => (
-                <th key={i} className="border p-2 text-sm text-gray-700">
+              {columns.map((title) => (
+                <th key={title} className="border p-2 text-sm text-gray-700">
                   {title.replace(/_/g, " ")}
                 </th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {Array.from({ length: totalRows }).map((_, rowIndex) => (
+            {rowTitles.map((label, rowIndex) => (
               <tr key={rowIndex}>
                 <td
                   className={`border p-2 font-medium whitespace-nowrap ${legendColors[rowIndex + 1]}`}
                 >
-                  {rowTitles[rowIndex]}
+                  {label}
                 </td>
-                {columns.map((colKey, colIndex) => (
-                  <td
-                    key={colIndex}
-                    className={`border p-2 ${
-                      data[colKey][rowIndex]
-                        ? `cursor-pointer ${legendColors[cellColors[rowIndex][colIndex]]}`
-                        : "bg-gray-50 text-gray-400"
-                    }`}
-                    onClick={() => data[colKey][rowIndex] && handleClick(rowIndex, colIndex)}
-                  >
-                    {data[colKey][rowIndex] || ""}
-                  </td>
-                ))}
+                {columns.map((colKey, colIndex) => {
+                  const cellValue = data[colKey][rowIndex];
+                  const colorClass = legendColors[cellColors[rowIndex][colIndex]];
+                  const clickable = !!cellValue;
+
+                  return (
+                    <td
+                      key={colIndex}
+                      className={`border p-2 ${
+                        clickable ? `cursor-pointer ${colorClass}` : "bg-gray-50 text-gray-400"
+                      }`}
+                      onClick={() => clickable && handleClick(rowIndex, colIndex)}
+                    >
+                      {cellValue || ""}
+                    </td>
+                  );
+                })}
               </tr>
             ))}
           </tbody>
